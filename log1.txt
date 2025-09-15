@@ -1,0 +1,490 @@
+14:36:21	Chú ý	Đã bắt đầu quá trình thực thi
+14:36:22	Thông tin	=== Test Configuration ULTIMATE ===
+14:36:22	Thông tin	Email: quoc.nguyen3@hoanmy.com
+14:36:22	Thông tin	Sheet: file nhap chc
+14:36:22	Thông tin	Priority fields: ngày ký hợp đồng, doanh thu, số người khám
+14:36:22	Thông tin	Numeric fields (0 = NOT missing): doanh thu, số người khám, doanh thu thực hiện
+14:36:22	Thông tin	Delay fields: ngày hóa đơn, doanh thu thực hiện, tháng GNDT
+14:36:22	Thông tin	Current month: 9
+14:36:22	Thông tin	Delay fields only check months <= 7
+14:36:22	Thông tin	=== Testing Column Index Calculation ===
+14:36:22	Thông tin	BX column index: 75
+14:36:22	Thông tin	BU column index: 72
+14:36:22	Thông tin	BV column index: 73
+14:36:22	Thông tin	BW column index: 74
+14:36:22	Thông tin	=== Testing isEmptyValue function ===
+14:36:22	Thông tin	isEmptyValue(0): false
+14:36:22	Thông tin	isEmptyValue("0"): false
+14:36:22	Thông tin	isEmptyValue(""): true
+14:36:22	Thông tin	isEmptyValue(" "): true
+14:36:22	Thông tin	isEmptyValue(null): true
+14:36:22	Thông tin	isEmptyValue(undefined): true
+14:36:22	Thông tin	isEmptyValue(123): false
+14:36:22	Thông tin	Sheet readable
+14:36:23	Thông tin	Sample row: [ '000440',
+  'CTYOLDTK1076 - CÔNG TY TNHH ALCHERA VIỆT NAM',
+  '075-450HDKSK112023',
+  Sun Dec 01 2024 00:00:00 GMT+0700 (Indochina Time),
+  'Tái kí',
+  30310000,
+  28,
+  Mon Jan 01 2024 00:00:00 GMT+0700 (Indochina Time),
+  30310000,
+  Wed Dec 11 2024 00:00:00 GMT+0700 (Indochina Time),
+  Thu Dec 12 2024 00:00:00 GMT+0700 (Indochina Time),
+  '2024 01',
+  'HMSG',
+  'CHC',
+  'Trần Thị Khanh',
+  Sun Dec 01 2024 00:00:00 GMT+0700 (Indochina Time),
+  2024,
+  1,
+  'W1',
+  1,
+  'CÔNG TY TNHH ALCHERA VIỆT NAM',
+  'KANG SU JIN' ]
+14:36:23	Thông tin	Column G (số người khám): 28 Type: number
+14:36:23	Thông tin	=== Testing ULTIMATE scan logic ===
+14:36:24	Thông tin	=== ULTIMATE FIX SCAN ===
+14:36:24	Thông tin	Current month: 9 - Processing months <= 9
+14:36:24	Thông tin	Numeric fields (0 = OK): doanh thu, số người khám, doanh thu thực hiện
+14:36:24	Thông tin	Delay fields (only check months <= 7): ngày hóa đơn, doanh thu thực hiện, tháng GNDT
+14:36:24	Thông tin	Row 219, Field "doanh thu", Value: "21600000", Type: number, Missing: false
+14:36:24	Thông tin	Row 219, Field "số người khám", Value: "10", Type: number, Missing: false
+14:36:24	Thông tin	Row 219, Field "doanh thu thực hiện", Value: "21600000", Type: number, Missing: false
+14:36:24	Thông tin	Row 220, Field "doanh thu", Value: "22415000", Type: number, Missing: false
+14:36:24	Thông tin	Row 220, Field "số người khám", Value: "11", Type: number, Missing: false
+14:36:24	Thông tin	Row 220, Field "doanh thu thực hiện", Value: "22415000", Type: number, Missing: false
+14:36:24	Thông tin	Row 221, Field "doanh thu", Value: "16150000", Type: number, Missing: false
+14:36:24	Thông tin	Row 221, Field "số người khám", Value: "17", Type: number, Missing: false
+14:36:24	Thông tin	Row 221, Field "doanh thu thực hiện", Value: "16150000", Type: number, Missing: false
+14:36:24	Thông tin	Row 222, Field "doanh thu", Value: "21620000", Type: number, Missing: false
+14:36:24	Thông tin	Row 222, Field "số người khám", Value: "22", Type: number, Missing: false
+14:36:24	Thông tin	Row 222, Field "doanh thu thực hiện", Value: "21620000", Type: number, Missing: false
+14:36:24	Thông tin	Row 223, Field "doanh thu", Value: "14740000", Type: number, Missing: false
+14:36:24	Thông tin	Row 223, Field "số người khám", Value: "13", Type: number, Missing: false
+14:36:24	Thông tin	Row 223, Field "doanh thu thực hiện", Value: "14740000", Type: number, Missing: false
+14:36:24	Thông tin	Row 224, Field "doanh thu", Value: "81595000", Type: number, Missing: false
+14:36:24	Thông tin	Row 224, Field "số người khám", Value: "142", Type: number, Missing: false
+14:36:24	Thông tin	Row 224, Field "doanh thu thực hiện", Value: "77515250", Type: number, Missing: false
+14:36:24	Thông tin	Row 225, Field "doanh thu", Value: "27425000", Type: number, Missing: false
+14:36:24	Thông tin	Row 225, Field "số người khám", Value: "25", Type: number, Missing: false
+14:36:24	Thông tin	Row 225, Field "doanh thu thực hiện", Value: "27425000", Type: number, Missing: false
+14:36:24	Thông tin	Row 226, Field "doanh thu", Value: "26725000", Type: number, Missing: false
+14:36:24	Thông tin	Row 226, Field "số người khám", Value: "22", Type: number, Missing: false
+14:36:24	Thông tin	Row 226, Field "doanh thu thực hiện", Value: "26725000", Type: number, Missing: false
+14:36:24	Thông tin	Row 227, Field "doanh thu", Value: "13610000", Type: number, Missing: false
+14:36:24	Thông tin	Row 227, Field "số người khám", Value: "4", Type: number, Missing: false
+14:36:24	Thông tin	Row 227, Field "doanh thu thực hiện", Value: "13610000", Type: number, Missing: false
+14:36:24	Thông tin	Row 228, Field "doanh thu", Value: "11795000", Type: number, Missing: false
+14:36:24	Thông tin	Row 228, Field "số người khám", Value: "11", Type: number, Missing: false
+14:36:24	Thông tin	Row 228, Field "doanh thu thực hiện", Value: "11795000", Type: number, Missing: false
+14:36:24	Thông tin	Row 229, Field "doanh thu", Value: "56505000", Type: number, Missing: false
+14:36:24	Thông tin	Row 229, Field "số người khám", Value: "12", Type: number, Missing: false
+14:36:24	Thông tin	Row 229, Field "doanh thu thực hiện", Value: "56505000", Type: number, Missing: false
+14:36:24	Thông tin	Row 230, Field "doanh thu", Value: "11345000", Type: number, Missing: false
+14:36:24	Thông tin	Row 230, Field "số người khám", Value: "7", Type: number, Missing: false
+14:36:24	Thông tin	Row 230, Field "doanh thu thực hiện", Value: "11345000", Type: number, Missing: false
+14:36:24	Thông tin	Row 231, Field "doanh thu", Value: "21670000", Type: number, Missing: false
+14:36:24	Thông tin	Row 231, Field "số người khám", Value: "10", Type: number, Missing: false
+14:36:24	Thông tin	Row 231, Field "doanh thu thực hiện", Value: "21670000", Type: number, Missing: false
+14:36:24	Thông tin	Row 232, Field "doanh thu", Value: "28320000", Type: number, Missing: false
+14:36:24	Thông tin	Row 232, Field "số người khám", Value: "44", Type: number, Missing: false
+14:36:24	Thông tin	Row 232, Field "doanh thu thực hiện", Value: "28320000", Type: number, Missing: false
+14:36:24	Thông tin	Row 233, Field "doanh thu", Value: "207996300", Type: number, Missing: false
+14:36:24	Thông tin	Row 233, Field "số người khám", Value: "170", Type: number, Missing: false
+14:36:24	Thông tin	Row 233, Field "doanh thu thực hiện", Value: "197596485", Type: number, Missing: false
+14:36:24	Thông tin	Row 234, Field "doanh thu", Value: "5965000", Type: number, Missing: false
+14:36:24	Thông tin	Row 234, Field "số người khám", Value: "3", Type: number, Missing: false
+14:36:24	Thông tin	Row 234, Field "doanh thu thực hiện", Value: "5965000", Type: number, Missing: false
+14:36:24	Thông tin	Row 235, Field "doanh thu", Value: "24220000", Type: number, Missing: false
+14:36:24	Thông tin	Row 235, Field "số người khám", Value: "16", Type: number, Missing: false
+14:36:24	Thông tin	Row 235, Field "doanh thu thực hiện", Value: "24220000", Type: number, Missing: false
+14:36:24	Thông tin	Row 236, Field "doanh thu", Value: "5797000", Type: number, Missing: false
+14:36:24	Thông tin	Row 236, Field "số người khám", Value: "1", Type: number, Missing: false
+14:36:24	Thông tin	Row 236, Field "doanh thu thực hiện", Value: "5797000", Type: number, Missing: false
+14:36:24	Thông tin	Row 237, Field "doanh thu", Value: "4436000", Type: number, Missing: false
+14:36:24	Thông tin	Row 237, Field "số người khám", Value: "4", Type: number, Missing: false
+14:36:24	Thông tin	Row 237, Field "doanh thu thực hiện", Value: "4436000", Type: number, Missing: false
+14:36:24	Thông tin	Row 238, Field "doanh thu", Value: "13385000", Type: number, Missing: false
+14:36:24	Thông tin	Row 238, Field "số người khám", Value: "18", Type: number, Missing: false
+14:36:24	Thông tin	Row 238, Field "doanh thu thực hiện", Value: "13385000", Type: number, Missing: false
+14:36:24	Thông tin	Row 239, Field "doanh thu", Value: "81089600", Type: number, Missing: false
+14:36:24	Thông tin	Row 239, Field "số người khám", Value: "76", Type: number, Missing: false
+14:36:24	Thông tin	Row 239, Field "doanh thu thực hiện", Value: "81089600", Type: number, Missing: false
+14:36:24	Thông tin	Row 240, Field "doanh thu", Value: "11145000", Type: number, Missing: false
+14:36:24	Thông tin	Row 240, Field "số người khám", Value: "13", Type: number, Missing: false
+14:36:24	Thông tin	Row 240, Field "doanh thu thực hiện", Value: "11145000", Type: number, Missing: false
+14:36:24	Thông tin	Row 241, Field "doanh thu", Value: "35215000", Type: number, Missing: false
+14:36:24	Thông tin	Row 241, Field "số người khám", Value: "11", Type: number, Missing: false
+14:36:24	Thông tin	Row 241, Field "doanh thu thực hiện", Value: "35215000", Type: number, Missing: false
+14:36:24	Thông tin	Row 242, Field "doanh thu", Value: "13369500", Type: number, Missing: false
+14:36:24	Thông tin	Row 242, Field "số người khám", Value: "6", Type: number, Missing: false
+14:36:24	Thông tin	Row 242, Field "doanh thu thực hiện", Value: "13369500", Type: number, Missing: false
+14:36:24	Thông tin	Row 243, Field "doanh thu", Value: "149049000", Type: number, Missing: false
+14:36:24	Thông tin	Row 243, Field "số người khám", Value: "72", Type: number, Missing: false
+14:36:24	Thông tin	Row 243, Field "doanh thu thực hiện", Value: "149049000", Type: number, Missing: false
+14:36:24	Thông tin	Row 244, Field "doanh thu", Value: "47975000", Type: number, Missing: false
+14:36:24	Thông tin	Row 244, Field "số người khám", Value: "45", Type: number, Missing: false
+14:36:24	Thông tin	Row 244, Field "doanh thu thực hiện", Value: "47975000", Type: number, Missing: false
+14:36:24	Thông tin	Row 245, Field "doanh thu", Value: "10775000", Type: number, Missing: false
+14:36:24	Thông tin	Row 245, Field "số người khám", Value: "7", Type: number, Missing: false
+14:36:24	Thông tin	Row 245, Field "doanh thu thực hiện", Value: "10775000", Type: number, Missing: false
+14:36:24	Thông tin	Row 246, Field "doanh thu", Value: "11935000", Type: number, Missing: false
+14:36:24	Thông tin	Row 246, Field "số người khám", Value: "4", Type: number, Missing: false
+14:36:24	Thông tin	Row 246, Field "doanh thu thực hiện", Value: "11935000", Type: number, Missing: false
+14:36:24	Thông tin	Row 247, Field "doanh thu", Value: "42165000", Type: number, Missing: false
+14:36:24	Thông tin	Row 247, Field "số người khám", Value: "24", Type: number, Missing: false
+14:36:24	Thông tin	Row 247, Field "doanh thu thực hiện", Value: "42165000", Type: number, Missing: false
+14:36:24	Thông tin	Row 248, Field "doanh thu", Value: "9848000", Type: number, Missing: false
+14:36:24	Thông tin	Row 248, Field "số người khám", Value: "3", Type: number, Missing: false
+14:36:24	Thông tin	Row 248, Field "doanh thu thực hiện", Value: "9848000", Type: number, Missing: false
+14:36:24	Thông tin	Row 249, Field "doanh thu", Value: "168187250", Type: number, Missing: false
+14:36:24	Thông tin	Row 249, Field "số người khám", Value: "64", Type: number, Missing: false
+14:36:24	Thông tin	Row 249, Field "doanh thu thực hiện", Value: "168187250", Type: number, Missing: false
+14:36:24	Thông tin	Row 250, Field "doanh thu", Value: "15890000", Type: number, Missing: false
+14:36:24	Thông tin	Row 250, Field "số người khám", Value: "14", Type: number, Missing: false
+14:36:24	Thông tin	Row 250, Field "doanh thu thực hiện", Value: "15890000", Type: number, Missing: false
+14:36:24	Thông tin	Row 251, Field "doanh thu", Value: "13600000", Type: number, Missing: false
+14:36:24	Thông tin	Row 251, Field "số người khám", Value: "11", Type: number, Missing: false
+14:36:24	Thông tin	Row 251, Field "doanh thu thực hiện", Value: "13600000", Type: number, Missing: false
+14:36:24	Thông tin	Row 252, Field "doanh thu", Value: "21285000", Type: number, Missing: false
+14:36:24	Thông tin	Row 252, Field "số người khám", Value: "7", Type: number, Missing: false
+14:36:24	Thông tin	Row 252, Field "doanh thu thực hiện", Value: "21285000", Type: number, Missing: false
+14:36:24	Thông tin	Row 253, Field "doanh thu", Value: "14105000", Type: number, Missing: false
+14:36:24	Thông tin	Row 253, Field "số người khám", Value: "14", Type: number, Missing: false
+14:36:24	Thông tin	Row 253, Field "doanh thu thực hiện", Value: "14615000", Type: number, Missing: false
+14:36:24	Thông tin	Row 254, Field "doanh thu", Value: "27740000", Type: number, Missing: false
+14:36:24	Thông tin	Row 254, Field "số người khám", Value: "31", Type: number, Missing: false
+14:36:24	Thông tin	Row 254, Field "doanh thu thực hiện", Value: "25490000", Type: number, Missing: false
+14:36:24	Thông tin	Row 255, Field "doanh thu", Value: "16690000", Type: number, Missing: false
+14:36:24	Thông tin	Row 255, Field "số người khám", Value: "20", Type: number, Missing: false
+14:36:24	Thông tin	Row 255, Field "doanh thu thực hiện", Value: "18345000", Type: number, Missing: false
+14:36:24	Thông tin	Row 256, Field "doanh thu", Value: "67235000", Type: number, Missing: false
+14:36:24	Thông tin	Row 256, Field "số người khám", Value: "68", Type: number, Missing: false
+14:36:24	Thông tin	Row 256, Field "doanh thu thực hiện", Value: "65798000", Type: number, Missing: false
+14:36:24	Thông tin	Row 257, Field "doanh thu", Value: "36054000", Type: number, Missing: false
+14:36:24	Thông tin	Row 257, Field "số người khám", Value: "35", Type: number, Missing: false
+14:36:24	Thông tin	Row 257, Field "doanh thu thực hiện", Value: "30645000", Type: number, Missing: false
+14:36:24	Thông tin	Row 258, Field "doanh thu", Value: "25413500", Type: number, Missing: false
+14:36:24	Thông tin	Row 258, Field "số người khám", Value: "35", Type: number, Missing: false
+14:36:24	Thông tin	Row 258, Field "doanh thu thực hiện", Value: "23334500", Type: number, Missing: false
+14:36:24	Thông tin	Row 259, Field "doanh thu", Value: "3722500", Type: number, Missing: false
+14:36:24	Thông tin	Row 259, Field "số người khám", Value: "4", Type: number, Missing: false
+14:36:24	Thông tin	Row 259, Field "doanh thu thực hiện", Value: "3722500", Type: number, Missing: false
+14:36:24	Thông tin	Row 260, Field "doanh thu", Value: "30075000", Type: number, Missing: false
+14:36:24	Thông tin	Row 260, Field "số người khám", Value: "15", Type: number, Missing: false
+14:36:24	Thông tin	Row 260, Field "doanh thu thực hiện", Value: "29140000", Type: number, Missing: false
+14:36:24	Thông tin	Row 261, Field "doanh thu", Value: "38690000", Type: number, Missing: false
+14:36:24	Thông tin	Row 261, Field "số người khám", Value: "34", Type: number, Missing: false
+14:36:24	Thông tin	Row 261, Field "doanh thu thực hiện", Value: "53580300", Type: number, Missing: false
+14:36:24	Thông tin	Row 262, Field "doanh thu", Value: "158965000", Type: number, Missing: false
+14:36:24	Thông tin	Row 262, Field "số người khám", Value: "77", Type: number, Missing: false
+14:36:24	Thông tin	Row 262, Field "doanh thu thực hiện", Value: "161615000", Type: number, Missing: false
+14:36:24	Thông tin	Row 263, Field "doanh thu", Value: "24130000", Type: number, Missing: false
+14:36:24	Thông tin	Row 263, Field "số người khám", Value: "12", Type: number, Missing: false
+14:36:24	Thông tin	Row 263, Field "doanh thu thực hiện", Value: "25880000", Type: number, Missing: false
+14:36:24	Thông tin	Row 264, Field "doanh thu", Value: "394000000", Type: number, Missing: false
+14:36:24	Thông tin	Row 264, Field "số người khám", Value: "64", Type: number, Missing: false
+14:36:24	Thông tin	Row 264, Field "doanh thu thực hiện", Value: "412340100", Type: number, Missing: false
+14:36:24	Thông tin	Row 265, Field "doanh thu", Value: "166836000", Type: number, Missing: false
+14:36:24	Thông tin	Row 265, Field "số người khám", Value: "80", Type: number, Missing: false
+14:36:24	Thông tin	Row 265, Field "doanh thu thực hiện", Value: "161631750", Type: number, Missing: false
+14:36:24	Thông tin	Row 266, Field "doanh thu", Value: "42170000", Type: number, Missing: false
+14:36:24	Thông tin	Row 266, Field "số người khám", Value: "43", Type: number, Missing: false
+14:36:24	Thông tin	Row 266, Field "doanh thu thực hiện", Value: "40145000", Type: number, Missing: false
+14:36:24	Thông tin	Row 267, Field "doanh thu", Value: "64833000", Type: number, Missing: false
+14:36:24	Thông tin	Row 267, Field "số người khám", Value: "12", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 268, Field "doanh thu", Value: "59721000", Type: number, Missing: false
+14:36:24	Thông tin	Row 268, Field "số người khám", Value: "12", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 269, Field "doanh thu", Value: "40320000", Type: number, Missing: false
+14:36:24	Thông tin	Row 269, Field "số người khám", Value: "8", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 270, Field "doanh thu", Value: "30750000", Type: number, Missing: false
+14:36:24	Thông tin	Row 270, Field "số người khám", Value: "16", Type: number, Missing: false
+14:36:24	Thông tin	Row 270, Field "doanh thu thực hiện", Value: "30580000", Type: number, Missing: false
+14:36:24	Thông tin	Row 271, Field "doanh thu", Value: "20050000", Type: number, Missing: false
+14:36:24	Thông tin	Row 271, Field "số người khám", Value: "6", Type: number, Missing: false
+14:36:24	Thông tin	Row 271, Field "doanh thu thực hiện", Value: "16805000", Type: number, Missing: false
+14:36:24	Thông tin	Row 272, Field "doanh thu", Value: "33190000", Type: number, Missing: false
+14:36:24	Thông tin	Row 272, Field "số người khám", Value: "10", Type: number, Missing: false
+14:36:24	Thông tin	Row 272, Field "doanh thu thực hiện", Value: "33190000", Type: number, Missing: false
+14:36:24	Thông tin	Row 273, Field "doanh thu", Value: "21890000", Type: number, Missing: false
+14:36:24	Thông tin	Row 273, Field "số người khám", Value: "7", Type: number, Missing: false
+14:36:24	Thông tin	Row 273, Field "doanh thu thực hiện", Value: "21290000", Type: number, Missing: false
+14:36:24	Thông tin	Row 274, Field "doanh thu", Value: "55780000", Type: number, Missing: false
+14:36:24	Thông tin	Row 274, Field "số người khám", Value: "29", Type: number, Missing: false
+14:36:24	Thông tin	Row 274, Field "doanh thu thực hiện", Value: "51065000", Type: number, Missing: false
+14:36:24	Thông tin	Row 275, Field "doanh thu", Value: "35185000", Type: number, Missing: false
+14:36:24	Thông tin	Row 275, Field "số người khám", Value: "13", Type: number, Missing: false
+14:36:24	Thông tin	Row 275, Field "doanh thu thực hiện", Value: "34660000", Type: number, Missing: false
+14:36:24	Thông tin	Row 276, Field "doanh thu", Value: "9180000", Type: number, Missing: false
+14:36:24	Thông tin	Row 276, Field "số người khám", Value: "3", Type: number, Missing: false
+14:36:24	Thông tin	Row 276, Field "doanh thu thực hiện", Value: "9180000", Type: number, Missing: false
+14:36:24	Thông tin	Row 277, Field "doanh thu", Value: "16270000", Type: number, Missing: false
+14:36:24	Thông tin	Row 277, Field "số người khám", Value: "7", Type: number, Missing: false
+14:36:24	Thông tin	Row 277, Field "doanh thu thực hiện", Value: "16170000", Type: number, Missing: false
+14:36:24	Thông tin	Row 278, Field "doanh thu", Value: "20565000", Type: number, Missing: false
+14:36:24	Thông tin	Row 278, Field "số người khám", Value: "10", Type: number, Missing: false
+14:36:24	Thông tin	Row 278, Field "doanh thu thực hiện", Value: "20495000", Type: number, Missing: false
+14:36:24	Thông tin	Row 279, Field "doanh thu", Value: "33405000", Type: number, Missing: false
+14:36:24	Thông tin	Row 279, Field "số người khám", Value: "32", Type: number, Missing: false
+14:36:24	Thông tin	Row 279, Field "doanh thu thực hiện", Value: "29710000", Type: number, Missing: false
+14:36:24	Thông tin	Row 280, Field "doanh thu", Value: "22635000", Type: number, Missing: false
+14:36:24	Thông tin	Row 280, Field "số người khám", Value: "13", Type: number, Missing: false
+14:36:24	Thông tin	Row 280, Field "doanh thu thực hiện", Value: "24865000", Type: number, Missing: false
+14:36:24	Thông tin	Row 281, Field "doanh thu", Value: "3070000", Type: number, Missing: false
+14:36:24	Thông tin	Row 281, Field "số người khám", Value: "2", Type: number, Missing: false
+14:36:24	Thông tin	Row 281, Field "doanh thu thực hiện", Value: "3070000", Type: number, Missing: false
+14:36:24	Thông tin	Row 282, Field "doanh thu", Value: "12105000", Type: number, Missing: false
+14:36:24	Thông tin	Row 282, Field "số người khám", Value: "12", Type: number, Missing: false
+14:36:24	Thông tin	Row 282, Field "doanh thu thực hiện", Value: "11885000", Type: number, Missing: false
+14:36:24	Thông tin	Row 283, Field "doanh thu", Value: "288387200", Type: number, Missing: false
+14:36:24	Thông tin	Row 283, Field "số người khám", Value: "182", Type: number, Missing: false
+14:36:24	Thông tin	Row 283, Field "doanh thu thực hiện", Value: "263317200", Type: number, Missing: false
+14:36:24	Thông tin	Row 284, Field "doanh thu", Value: "18477000", Type: number, Missing: false
+14:36:24	Thông tin	Row 284, Field "số người khám", Value: "6", Type: number, Missing: false
+14:36:24	Thông tin	Row 284, Field "doanh thu thực hiện", Value: "17877000", Type: number, Missing: false
+14:36:24	Thông tin	Row 285, Field "doanh thu", Value: "61089000", Type: number, Missing: false
+14:36:24	Thông tin	Row 285, Field "số người khám", Value: "26", Type: number, Missing: false
+14:36:24	Thông tin	Row 285, Field "doanh thu thực hiện", Value: "62603000", Type: number, Missing: false
+14:36:24	Thông tin	Row 286, Field "doanh thu", Value: "19015000", Type: number, Missing: false
+14:36:24	Thông tin	Row 286, Field "số người khám", Value: "17", Type: number, Missing: false
+14:36:24	Thông tin	Row 286, Field "doanh thu thực hiện", Value: "20940000", Type: number, Missing: false
+14:36:24	Thông tin	Row 287, Field "doanh thu", Value: "41720000", Type: number, Missing: false
+14:36:24	Thông tin	Row 287, Field "số người khám", Value: "26", Type: number, Missing: false
+14:36:24	Thông tin	Row 287, Field "doanh thu thực hiện", Value: "41110000", Type: number, Missing: false
+14:36:24	Thông tin	Row 288, Field "doanh thu", Value: "61450000", Type: number, Missing: false
+14:36:24	Thông tin	Row 288, Field "số người khám", Value: "47", Type: number, Missing: false
+14:36:24	Thông tin	Row 288, Field "doanh thu thực hiện", Value: "58765000", Type: number, Missing: false
+14:36:24	Thông tin	Row 289, Field "doanh thu", Value: "64860000", Type: number, Missing: false
+14:36:24	Thông tin	Row 289, Field "số người khám", Value: "48", Type: number, Missing: false
+14:36:24	Thông tin	Row 289, Field "doanh thu thực hiện", Value: "62585000", Type: number, Missing: false
+14:36:24	Thông tin	Row 290, Field "doanh thu", Value: "26745000", Type: number, Missing: false
+14:36:24	Thông tin	Row 290, Field "số người khám", Value: "8", Type: number, Missing: false
+14:36:24	Thông tin	Row 290, Field "doanh thu thực hiện", Value: "25560000", Type: number, Missing: false
+14:36:24	Thông tin	Row 291, Field "doanh thu", Value: "78259850", Type: number, Missing: false
+14:36:24	Thông tin	Row 291, Field "số người khám", Value: "32", Type: number, Missing: false
+14:36:24	Thông tin	Row 291, Field "doanh thu thực hiện", Value: "82639900", Type: number, Missing: false
+14:36:24	Thông tin	Row 292, Field "doanh thu", Value: "49080000", Type: number, Missing: false
+14:36:24	Thông tin	Row 292, Field "số người khám", Value: "13", Type: number, Missing: false
+14:36:24	Thông tin	Row 292, Field "doanh thu thực hiện", Value: "48580000", Type: number, Missing: false
+14:36:24	Thông tin	Row 293, Field "doanh thu", Value: "20980000", Type: number, Missing: false
+14:36:24	Thông tin	Row 293, Field "số người khám", Value: "26", Type: number, Missing: false
+14:36:24	Thông tin	Row 293, Field "doanh thu thực hiện", Value: "20335000", Type: number, Missing: false
+14:36:24	Thông tin	Row 294, Field "doanh thu", Value: "103620000", Type: number, Missing: false
+14:36:24	Thông tin	Row 294, Field "số người khám", Value: "50", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 295, Field "doanh thu", Value: "68314500", Type: number, Missing: false
+14:36:24	Thông tin	Row 295, Field "số người khám", Value: "63", Type: number, Missing: false
+14:36:24	Thông tin	Row 295, Field "doanh thu thực hiện", Value: "55376000", Type: number, Missing: false
+14:36:24	Thông tin	Row 296, Field "doanh thu", Value: "10050000", Type: number, Missing: false
+14:36:24	Thông tin	Row 296, Field "số người khám", Value: "7", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 297, Field "doanh thu", Value: "38440000", Type: number, Missing: false
+14:36:24	Thông tin	Row 297, Field "số người khám", Value: "29", Type: number, Missing: false
+14:36:24	Thông tin	Row 297, Field "doanh thu thực hiện", Value: "50055000", Type: number, Missing: false
+14:36:24	Thông tin	Row 298, Field "doanh thu", Value: "35675500", Type: number, Missing: false
+14:36:24	Thông tin	Row 298, Field "số người khám", Value: "7", Type: number, Missing: false
+14:36:24	Thông tin	Row 298, Field "doanh thu thực hiện", Value: "40772000", Type: number, Missing: false
+14:36:24	Thông tin	Row 299, Field "doanh thu", Value: "23840000", Type: number, Missing: false
+14:36:24	Thông tin	Row 299, Field "số người khám", Value: "11", Type: number, Missing: false
+14:36:24	Thông tin	Row 299, Field "doanh thu thực hiện", Value: "24820000", Type: number, Missing: false
+14:36:24	Thông tin	Row 300, Field "doanh thu", Value: "362031565", Type: number, Missing: false
+14:36:24	Thông tin	Row 300, Field "số người khám", Value: "244", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 301, Field "doanh thu", Value: "4719489", Type: number, Missing: false
+14:36:24	Thông tin	Row 301, Field "số người khám", Value: "3", Type: number, Missing: false
+14:36:24	Thông tin	Row 301, Field "doanh thu thực hiện", Value: "4719492", Type: number, Missing: false
+14:36:24	Thông tin	Row 302, Field "doanh thu", Value: "24300000", Type: number, Missing: false
+14:36:24	Thông tin	Row 302, Field "số người khám", Value: "24", Type: number, Missing: false
+14:36:24	Thông tin	Row 302, Field "doanh thu thực hiện", Value: "24300000", Type: number, Missing: false
+14:36:24	Thông tin	Row 303, Field "doanh thu", Value: "736200000", Type: number, Missing: false
+14:36:24	Thông tin	Row 303, Field "số người khám", Value: "244", Type: number, Missing: false
+14:36:24	Thông tin	Row 303, Field "doanh thu thực hiện", Value: "761140000", Type: number, Missing: false
+14:36:24	Thông tin	Row 304, Field "doanh thu", Value: "24675000", Type: number, Missing: false
+14:36:24	Thông tin	Row 304, Field "số người khám", Value: "11", Type: number, Missing: false
+14:36:24	Thông tin	Row 304, Field "doanh thu thực hiện", Value: "20000000", Type: number, Missing: false
+14:36:24	Thông tin	Row 305, Field "doanh thu", Value: "3564356", Type: number, Missing: false
+14:36:24	Thông tin	Row 305, Field "số người khám", Value: "2", Type: number, Missing: false
+14:36:24	Thông tin	Row 305, Field "doanh thu thực hiện", Value: "3564360", Type: number, Missing: false
+14:36:24	Thông tin	Row 306, Field "doanh thu", Value: "31864245", Type: number, Missing: false
+14:36:24	Thông tin	Row 306, Field "số người khám", Value: "20", Type: number, Missing: false
+14:36:24	Thông tin	Row 306, Field "doanh thu thực hiện", Value: "27669433", Type: number, Missing: false
+14:36:24	Thông tin	Row 307, Field "doanh thu", Value: "45871700", Type: number, Missing: false
+14:36:24	Thông tin	Row 307, Field "số người khám", Value: "29", Type: number, Missing: false
+14:36:24	Thông tin	Row 307, Field "doanh thu thực hiện", Value: "42303099", Type: number, Missing: false
+14:36:24	Thông tin	Row 308, Field "doanh thu", Value: "4661479", Type: number, Missing: false
+14:36:24	Thông tin	Row 308, Field "số người khám", Value: "3", Type: number, Missing: false
+14:36:24	Thông tin	Row 308, Field "doanh thu thực hiện", Value: "4661480", Type: number, Missing: false
+14:36:24	Thông tin	Row 309, Field "doanh thu", Value: "14843536", Type: number, Missing: false
+14:36:24	Thông tin	Row 309, Field "số người khám", Value: "14", Type: number, Missing: false
+14:36:24	Thông tin	Row 309, Field "doanh thu thực hiện", Value: "14448540", Type: number, Missing: false
+14:36:24	Thông tin	Row 310, Field "doanh thu", Value: "1544158", Type: number, Missing: false
+14:36:24	Thông tin	Row 310, Field "số người khám", Value: "1", Type: number, Missing: false
+14:36:24	Thông tin	Row 310, Field "doanh thu thực hiện", Value: "1544158", Type: number, Missing: false
+14:36:24	Thông tin	Row 312, Field "doanh thu", Value: "146494300", Type: number, Missing: false
+14:36:24	Thông tin	Row 312, Field "số người khám", Value: "48", Type: number, Missing: false
+14:36:24	Thông tin	Row 312, Field "doanh thu thực hiện", Value: "152264300", Type: number, Missing: false
+14:36:24	Thông tin	Row 313, Field "doanh thu", Value: "14470000", Type: number, Missing: false
+14:36:24	Thông tin	Row 313, Field "số người khám", Value: "7", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 314, Field "doanh thu", Value: "87556000", Type: number, Missing: false
+14:36:24	Thông tin	Row 314, Field "số người khám", Value: "77", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 315, Field "doanh thu", Value: "21815000", Type: number, Missing: false
+14:36:24	Thông tin	Row 315, Field "số người khám", Value: "16", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 316, Field "doanh thu", Value: "20596000", Type: number, Missing: false
+14:36:24	Thông tin	Row 316, Field "số người khám", Value: "7", Type: number, Missing: false
+14:36:24	Thông tin	Row 316, Field "doanh thu thực hiện", Value: "20526000", Type: number, Missing: false
+14:36:24	Thông tin	Row 317, Field "doanh thu", Value: "9422250", Type: number, Missing: false
+14:36:24	Thông tin	Row 317, Field "số người khám", Value: "9", Type: number, Missing: false
+14:36:24	Thông tin	Row 317, Field "doanh thu thực hiện", Value: "9086750", Type: number, Missing: false
+14:36:24	Thông tin	Row 318, Field "doanh thu", Value: "19020000", Type: number, Missing: false
+14:36:24	Thông tin	Row 318, Field "số người khám", Value: "12", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 319, Field "doanh thu", Value: "44045000", Type: number, Missing: false
+14:36:24	Thông tin	Row 319, Field "số người khám", Value: "9", Type: number, Missing: false
+14:36:24	Thông tin	Row 319, Field "doanh thu thực hiện", Value: "49250000", Type: number, Missing: false
+14:36:24	Thông tin	Row 320, Field "doanh thu", Value: "27680000", Type: number, Missing: false
+14:36:24	Thông tin	Row 320, Field "số người khám", Value: "3", Type: number, Missing: false
+14:36:24	Thông tin	Row 320, Field "doanh thu thực hiện", Value: "27680000", Type: number, Missing: false
+14:36:24	Thông tin	Row 321, Field "doanh thu", Value: "27575000", Type: number, Missing: false
+14:36:24	Thông tin	Row 321, Field "số người khám", Value: "19", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 322, Field "doanh thu", Value: "44546000", Type: number, Missing: false
+14:36:24	Thông tin	Row 322, Field "số người khám", Value: "12", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 323, Field "doanh thu", Value: "37644250", Type: number, Missing: false
+14:36:24	Thông tin	Row 323, Field "số người khám", Value: "9", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 324, Field "doanh thu", Value: "67986000", Type: number, Missing: false
+14:36:24	Thông tin	Row 324, Field "số người khám", Value: "45", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 325, Field "doanh thu", Value: "39100000", Type: number, Missing: false
+14:36:24	Thông tin	Row 325, Field "số người khám", Value: "28", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 326, Field "doanh thu", Value: "12708500", Type: number, Missing: false
+14:36:24	Thông tin	Row 326, Field "số người khám", Value: "12", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 327, Field "doanh thu", Value: "8215500", Type: number, Missing: false
+14:36:24	Thông tin	Row 327, Field "số người khám", Value: "8", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 328, Field "doanh thu", Value: "70932000", Type: number, Missing: false
+14:36:24	Thông tin	Row 328, Field "số người khám", Value: "10", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 329, Field "doanh thu", Value: "487000000", Type: number, Missing: false
+14:36:24	Thông tin	Row 329, Field "số người khám", Value: "640", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 330, Field "doanh thu", Value: "60515000", Type: number, Missing: false
+14:36:24	Thông tin	Row 330, Field "số người khám", Value: "13", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 331, Field "doanh thu", Value: "1024300000", Type: number, Missing: false
+14:36:24	Thông tin	Row 331, Field "số người khám", Value: "154", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 332, Field "doanh thu", Value: "43755000", Type: number, Missing: false
+14:36:24	Thông tin	Row 332, Field "số người khám", Value: "14", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 333, Field "doanh thu", Value: "26610000", Type: number, Missing: false
+14:36:24	Thông tin	Row 333, Field "số người khám", Value: "19", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 334, Field "doanh thu", Value: "70275000", Type: number, Missing: false
+14:36:24	Thông tin	Row 334, Field "số người khám", Value: "61", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 335, Field "doanh thu", Value: "85454000", Type: number, Missing: false
+14:36:24	Thông tin	Row 335, Field "số người khám", Value: "27", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 336, Field "doanh thu", Value: "62097500", Type: number, Missing: false
+14:36:24	Thông tin	Row 336, Field "số người khám", Value: "20", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 337, Field "doanh thu", Value: "38125000", Type: number, Missing: false
+14:36:24	Thông tin	Row 337, Field "số người khám", Value: "44", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 338, Field "doanh thu", Value: "54040000", Type: number, Missing: false
+14:36:24	Thông tin	Row 338, Field "số người khám", Value: "19", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 339, Field "doanh thu", Value: "13730000", Type: number, Missing: false
+14:36:24	Thông tin	Row 339, Field "số người khám", Value: "3", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "ngày hóa đơn" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "doanh thu thực hiện" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 8 (> 7) - delay field
+14:36:24	Thông tin	Row 340, Field "doanh thu", Value: "22580000", Type: number, Missing: false
+14:36:24	Thông tin	Row 340, Field "số người khám", Value: "27", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 341, Field "doanh thu", Value: "35345000", Type: number, Missing: false
+14:36:24	Thông tin	Row 341, Field "số người khám", Value: "22", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 342, Field "doanh thu", Value: "985915150", Type: number, Missing: false
+14:36:24	Thông tin	Row 342, Field "số người khám", Value: "691", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 343, Field "doanh thu", Value: "56335000", Type: number, Missing: false
+14:36:24	Thông tin	Row 343, Field "số người khám", Value: "31", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 344, Field "doanh thu", Value: "12195000", Type: number, Missing: false
+14:36:24	Thông tin	Row 344, Field "số người khám", Value: "14", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 345, Field "doanh thu", Value: "10455000", Type: number, Missing: false
+14:36:24	Thông tin	Row 345, Field "số người khám", Value: "4", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 346, Field "doanh thu", Value: "76952000", Type: number, Missing: false
+14:36:24	Thông tin	Row 346, Field "số người khám", Value: "30", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 347, Field "doanh thu", Value: "23207500", Type: number, Missing: false
+14:36:24	Thông tin	Row 347, Field "số người khám", Value: "12", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 349, Field "doanh thu", Value: "13105000", Type: number, Missing: false
+14:36:24	Thông tin	Row 349, Field "số người khám", Value: "5", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Row 353, Field "doanh thu", Value: "96924000", Type: number, Missing: false
+14:36:24	Thông tin	Row 353, Field "số người khám", Value: "91", Type: number, Missing: false
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	=== DEBUG ROW 356 ===
+14:36:24	Thông tin	BX Index: 75
+14:36:24	Thông tin	BX Value: "undefined"
+14:36:24	Thông tin	BX Type: undefined
+14:36:24	Thông tin	Row length: 22
+14:36:24	Thông tin	Will skip: undefined
+14:36:24	Thông tin	Row 356, Field "doanh thu", Value: "", Type: string, Missing: true
+14:36:24	Thông tin	✓ MISSING: Row 356, "doanh thu" = ""
+14:36:24	Thông tin	Row 356, Field "số người khám", Value: "", Type: string, Missing: true
+14:36:24	Thông tin	✓ MISSING: Row 356, "số người khám" = ""
+14:36:24	Thông tin	✓ MISSING: Row 356, "ngày bắt đầu khám" = ""
+14:36:24	Thông tin	✓ MISSING: Row 356, "ngày kết thúc khám" = ""
+14:36:24	Thông tin	Skipping "tháng GNDT" for month 9 (> 7) - delay field
+14:36:24	Thông tin	Found missing data in 1 months
+14:36:24	Thông tin	Months with data: [ '9' ]
+14:36:24	Thông tin	Employee name: Khanh
+14:36:24	Thông tin	Employee name extracted: Khanh
+14:36:24	Thông tin	Grouped result keys: [ '9' ]
+14:36:23	Chú ý	Đã hoàn tất quá trình thực thi

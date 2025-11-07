@@ -193,7 +193,7 @@ function sendMinimalEmail(groupedData, employeeName) {
 <table style="border-collapse: collapse; width: 100%; margin-top: 25px; font-size: 13px;">
   <thead>
     <tr style="border-bottom: 1px solid #000;">
-      <th style="padding: 10px 8px; text-align: left; font-weight: bold;">Đối tác</th>
+      <th style="padding: 10px 8px; text-align: left; font-weight: light;">Đối tác</th>
 `;
 
   // Header columns for each field
@@ -229,10 +229,10 @@ function sendMinimalEmail(groupedData, employeeName) {
       <td style="padding: 10px 8px;">${partner.partnerName} <span style="color: #999; font-size: 12px; ">(Hàng ${partner.rowNumber})</span></td>
 `;
 
-    // Check mark for each field
+    // Check mark for each field - BLACK COLOR
     fieldNames.forEach(fieldName => {
       const isMissing = allMissingFields.has(fieldName);
-      htmlContent += `      <td style="padding: 10px 8px; text-align: center; color: #999;">${isMissing ? 'x' : ''}</td>\n`;
+      htmlContent += `      <td style="padding: 10px 8px; text-align: center; color: #000; font-weight: light;">${isMissing ? 'x' : ''}</td>\n`;
     });
 
     htmlContent += `    </tr>

@@ -44,7 +44,7 @@ function dailyEmailCheck() {
     
     if (Object.keys(result.groupedData).length > 0) {
       sendPersonalizedEmailUltimate(result.groupedData, result.employeeName);
-      console.log(`Email sent to ${result.employeeName} - ${Object.keys(result.groupedData).length} companies`);
+      console.log(`Email sent to ${result.employeeName} - ${Object.keys(result.groupedData).length} months`);
     } else {
       console.log("No missing data - no email sent");
     }
@@ -67,21 +67,22 @@ function manualCheck() {
 }
 
 /**
- * ULTIMATE FIX: Group by Company - Matrix Design
+ * ULTIMATE FIX: Triệt để check numeric vs text fields + delay fields
  */
 function scanMissingDataUltimateFix() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+  // Expand range to BZ to ensure BX column is included
   const data = sheet.getRange("A:BZ").getValues();
-
-  const groupedByCompany = {};
-  const currentMonth = new Date().getMonth() + 1;
-  let employeeName = "";
-
-  console.log(`=== SCAN START - Matrix Design ===`);
+  
+  const groupedByMonth = {};
+  const currentMonth = new Date().getMonth() + 1; // Current month (1-12)
+  let employeeName = ""; // Lấy tên từ cột O
+  
+  console.log(`=== ULTIMATE FIX SCAN ===`);
   console.log(`Current month: ${currentMonth} - Processing months <= ${currentMonth}`);
   console.log(`Numeric fields (0 = OK): ${NUMERIC_FIELDS.join(', ')}`);
   console.log(`Delay fields (only check months <= ${currentMonth - 2}): ${DELAY_FIELDS.join(', ')}`);
-
+  
   // Loop through rows (skip header)
   for (let i = 1; i < data.length; i++) {
     const row = data[i];
@@ -117,71 +118,74 @@ function scanMissingDataUltimateFix() {
       }
       
       const companyName = row[20] || extractCompanyName(row[1]); // Column U or extract from B
-      const rowNumber = i + 1;
-
-      // Lấy tên nhân viên từ cột O (index 14)
+      
+      // Lấy tên nhân viên từ cột O (index 14) - chỉ lấy lần đầu
       if (!employeeName && row[14]) {
         employeeName = extractFirstName(row[14].toString());
       }
-
+      
       // Check each required field với ULTIMATE LOGIC
-      const missingFields = [];
       Object.keys(REQUIRED_FIELDS).forEach(col => {
         const colIndex = columnLetterToIndex(col);
         const fieldName = REQUIRED_FIELDS[col];
-
+        
         // SKIP certain fields for current month
         if (monthNumber === currentMonth && SKIP_IN_CURRENT_MONTH.includes(fieldName)) {
-          return;
+          return; // Skip this field for current month
         }
-
-        // SPECIAL LOGIC cho các fields có delay time
+        
+        // *** SPECIAL LOGIC cho các fields có delay time ***
         if (DELAY_FIELDS.includes(fieldName) && monthNumber > (currentMonth - 2)) {
-          return;
+          console.log(`Skipping "${fieldName}" for month ${monthNumber} (> ${currentMonth - 2}) - delay field`);
+          return; // Skip delay fields cho tháng hiện tại và tháng trước
         }
-
+        
         const cellValue = row[colIndex];
         let isMissing = false;
-
-        // ULTIMATE LOGIC: check numeric vs text fields
+        
+        // *** ULTIMATE LOGIC: TRIỆT ĐỂ check numeric fields ***
         if (NUMERIC_FIELDS.includes(fieldName)) {
+          // TRIỆT ĐỂ: Với numeric fields, chỉ missing nếu null/undefined/empty string
           isMissing = isEmptyValue(cellValue);
+          
+          // DEBUG LOG
+          console.log(`Row ${i+1}, Field "${fieldName}", Value: "${cellValue}", Type: ${typeof cellValue}, Missing: ${isMissing}`);
+          
         } else {
+          // Với TEXT fields: tính cả trống và whitespace
           isMissing = isEmptyValue(cellValue);
         }
-
+        
+        // If field is missing theo logic trên
         if (isMissing) {
-          missingFields.push(fieldName);
-          console.log(`✓ MISSING: Row ${rowNumber}, month ${monthNumber}, "${fieldName}" for ${companyName}`);
+          
+          // Initialize structure if not exists
+          if (!groupedByMonth[month]) {
+            groupedByMonth[month] = {};
+          }
+          if (!groupedByMonth[month][fieldName]) {
+            groupedByMonth[month][fieldName] = [];
+          }
+          
+          // Add company to this group
+          groupedByMonth[month][fieldName].push({
+            rowNumber: i + 1,
+            companyName: companyName
+          });
+          
+          console.log(`✓ MISSING: Row ${i+1}, "${fieldName}" = "${cellValue}"`);
         }
       });
-
-      // Nếu có fields thiếu, add vào groupedByCompany
-      if (missingFields.length > 0) {
-        const companyKey = `${companyName}|${rowNumber}|${monthNumber}`;
-
-        if (!groupedByCompany[companyKey]) {
-          groupedByCompany[companyKey] = {
-            companyName: companyName,
-            rowNumber: rowNumber,
-            month: monthNumber,
-            missingFields: new Set()
-          };
-        }
-
-        // Collect missing fields for this month
-        missingFields.forEach(field => {
-          groupedByCompany[companyKey].missingFields.add(field);
-        });
-      }
     }
   }
-
-  console.log(`Found ${Object.keys(groupedByCompany).length} company-month entries with missing data`);
-
+  
+  console.log(`Found missing data in ${Object.keys(groupedByMonth).length} months`);
+  console.log("Months with data:", Object.keys(groupedByMonth));
+  console.log("Employee name:", employeeName);
+  
   return {
-    groupedData: groupedByCompany,
-    employeeName: employeeName || "bạn"
+    groupedData: groupedByMonth,
+    employeeName: employeeName || "bạn" // fallback
   };
 }
 
@@ -217,108 +221,111 @@ function isEmptyValue(value) {
 }
 
 /**
- * SEND EMAIL - Matrix Table Design
+ * SEND PERSONALIZED EMAIL - ULTIMATE VERSION
  */
 function sendPersonalizedEmailUltimate(groupedData, employeeName) {
   if (Object.keys(groupedData).length === 0) return;
-
+  
   const sheetUrl = SpreadsheetApp.getActiveSpreadsheet().getUrl();
-
-  // Sort: Month descending (recent first), then by missing count descending
-  const sortedCompanyKeys = Object.keys(groupedData).sort((a, b) => {
-    const compA = groupedData[a];
-    const compB = groupedData[b];
-
-    // Primary sort: Month (descending - tháng gần nhất trước)
-    if (compB.month !== compA.month) {
-      return compB.month - compA.month;
-    }
-
-    // Secondary sort: Missing fields count (descending - thiếu nhiều trước)
-    const countA = compA.missingFields.size;
-    const countB = compB.missingFields.size;
-    if (countB !== countA) {
-      return countB - countA;
-    }
-
-    // Tertiary sort: Company name (alphabetically)
-    return compA.companyName.localeCompare(compB.companyName);
-  });
-
-  const totalEntries = sortedCompanyKeys.length;
-  const fieldNames = Object.values(REQUIRED_FIELDS);
-
-  // === HTML EMAIL - MATRIX TABLE ===
+  
+  // === HTML EMAIL CONTENT ===
   let htmlContent = `
-<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; color: #000; max-width: 1100px; line-height: 1.5;">
-<p>Kính gửi chị <strong>${employeeName}</strong>,</p>
-<p>Trong sheet 'file nhap chc' có <strong>${totalEntries}</strong> mục đang thiếu thông tin, chị cập nhật vào em với nha.</p>
-<p><a href="${sheetUrl}" style="color: #000; text-decoration: underline;">Google Sheet</a></p>
-
-<table style="border-collapse: collapse; width: 100%; margin-top: 25px; font-size: 12px;">
-  <thead>
-    <tr style="border-bottom: 1px solid #000;">
-      <th style="padding: 10px 8px; text-align: center; font-weight: bold; width: 60px;">Tháng</th>
-      <th style="padding: 10px 8px; text-align: left; font-weight: bold;">Công ty</th>
+<div style="font-family: Arial, sans-serif; color: #000; max-width: 800px; line-height: 1.4;">
+<p style="margin-bottom: 5px;">Kính gửi chị <strong>${employeeName}</strong>,</p>
+<p style="margin-bottom: 15px;">Các trường thông tin trong file nhập đang bị thiếu một số hạng mục ở các tháng, có gì chị cập nhật vào em với nha.</p>
+<p style="margin-bottom: 20px;"><strong><a href="${sheetUrl}" style="color: #000; text-decoration: underline;">Mở Google Sheet</a></strong></p>
 `;
 
-  // Header columns for each field
-  fieldNames.forEach(fieldName => {
-    const shortName = fieldName
-      .replace('ngày ký hợp đồng', 'Ngày KýHĐ')
-      .replace('doanh thu', 'Doanh Thu')
-      .replace('số người khám', 'Số NK')
-      .replace('mã hợp đồng', 'Mã HĐ')
-      .replace('trạng thái ký', 'TT Ký')
-      .replace('ngày hóa đơn', 'Ngày HĐơn')
-      .replace('doanh thu thực hiện', 'DT TH')
-      .replace('ngày bắt đầu khám', 'Ngày BĐ')
-      .replace('ngày kết thúc khám', 'Ngày KT')
-      .replace('tháng GNDT', 'GNDT');
-
-    htmlContent += `      <th style="padding: 10px 6px; text-align: center; font-weight: bold; width: 70px;">${shortName}</th>\n`;
+  // Sort months DESCENDING (larger months first) 
+  const sortedMonths = Object.keys(groupedData).sort((a, b) => {
+    const monthA = parseInt(a) || 0;
+    const monthB = parseInt(b) || 0;
+    return monthB - monthA; // Descending order
   });
-
-  htmlContent += `    </tr>
-  </thead>
-  <tbody>
+  
+  console.log(`Month order (high to low): ${sortedMonths.join(', ')}`);
+  
+  sortedMonths.forEach(month => {
+    htmlContent += `
+<div style="margin-bottom: 25px; border: 2px solid #000; padding: 15px;">
+  <h4 style="margin: 0 0 15px 0; background: #e0e0e0; padding: 10px; border-bottom: 2px solid #000; font-weight: bold;">
+    THÁNG ${month}
+  </h4>
 `;
 
-  // Table rows
-  sortedCompanyKeys.forEach(companyKey => {
-    const company = groupedData[companyKey];
+    // Sort fields by priority (priority fields first)
+    const monthFields = Object.keys(groupedData[month]);
+    const priorityFieldsInMonth = monthFields.filter(field => PRIORITY_FIELDS.includes(field)).sort();
+    const otherFieldsInMonth = monthFields.filter(field => !PRIORITY_FIELDS.includes(field)).sort();
+    const sortedFields = [...priorityFieldsInMonth, ...otherFieldsInMonth];
 
-    htmlContent += `    <tr style="border-bottom: 1px solid #e0e0e0;">
-      <td style="padding: 10px 8px; text-align: center; font-weight: bold;">${company.month}</td>
-      <td style="padding: 10px 8px;">${company.companyName} <span style="color: #999; font-size: 11px;">(Hàng ${company.rowNumber})</span></td>
+    sortedFields.forEach(fieldType => {
+      const companies = groupedData[month][fieldType];
+      const isPriority = PRIORITY_FIELDS.includes(fieldType);
+      
+      htmlContent += `
+  <div style="margin-bottom: 15px;">
+    <h5 style="margin: 8px 0 5px 0; color: ${isPriority ? '#c00' : '#d00'}; text-transform: uppercase; font-weight: ${isPriority ? 'bold' : 'normal'};">
+      ${isPriority ? '⚠️ ' : ''}${fieldType} (${companies.length} công ty)
+    </h5>
+    <table border="1" style="border-collapse: collapse; width: 100%; margin-bottom: 10px;">
+      <tr style="background: #f5f5f5;">
+        <th style="padding: 6px; text-align: left; width: 80px; border: 1px solid #999;">Dòng</th>
+        <th style="padding: 6px; text-align: left; border: 1px solid #999;">Công ty</th>
+      </tr>
 `;
 
-    // Check mark for each field - BLACK COLOR
-    fieldNames.forEach(fieldName => {
-      const isMissing = company.missingFields.has(fieldName);
-      htmlContent += `      <td style="padding: 10px 6px; text-align: center; color: #000; font-weight: bold;">${isMissing ? 'x' : ''}</td>\n`;
+      companies.forEach(company => {
+        htmlContent += `
+      <tr>
+        <td style="padding: 6px; border: 1px solid #ccc;">${company.rowNumber}</td>
+        <td style="padding: 6px; border: 1px solid #ccc;">${company.companyName}</td>
+      </tr>
+`;
+      });
+      
+      htmlContent += `    </table>
+  </div>
+`;
     });
-
-    htmlContent += `    </tr>
+    
+    htmlContent += `</div>
 `;
   });
-
-  htmlContent += `  </tbody>
-</table>
-
-<p style="margin-top: 25px; color: #666;">Trân trọng</p>
-
+  
+  htmlContent += `
+<p style="margin-top: 20px; text-align: left;"><em>Trân trọng</em></p>
 </div>`;
 
   // === PLAIN TEXT VERSION ===
-  let textContent = `Kính gửi chị ${employeeName},\n\n`;
-  textContent += `Trong sheet 'file nhap chc' có ${totalEntries} mục đang thiếu thông tin, chị cập nhật vào em với nha.\n\n`;
+  let textContent = `Kính gửi chị ${employeeName},\n`;
+  textContent += `Các trường thông tin đang bị thiếu một số hạng mục, có gì chị cập nhật giúp em nha.\n\n`;
   textContent += `Link: ${sheetUrl}\n\n`;
-
-  sortedCompanyKeys.forEach(companyKey => {
-    const company = groupedData[companyKey];
-    textContent += `Tháng ${company.month} - ${company.companyName} (Hàng ${company.rowNumber}): ${Array.from(company.missingFields).join(', ')}\n`;
+  
+  sortedMonths.forEach(month => {
+    textContent += `=== THÁNG ${month} ===\n`;
+    
+    // Same sorting logic
+    const monthFields = Object.keys(groupedData[month]);
+    const priorityFieldsInMonth = monthFields.filter(field => PRIORITY_FIELDS.includes(field)).sort();
+    const otherFieldsInMonth = monthFields.filter(field => !PRIORITY_FIELDS.includes(field)).sort();
+    const sortedFields = [...priorityFieldsInMonth, ...otherFieldsInMonth];
+    
+    sortedFields.forEach(fieldType => {
+      const companies = groupedData[month][fieldType];
+      const isPriority = PRIORITY_FIELDS.includes(fieldType);
+      
+      textContent += `\n${isPriority ? '[PRIORITY] ' : ''}${fieldType.toUpperCase()} (${companies.length} công ty):\n`;
+      
+      companies.forEach(company => {
+        textContent += `  • Dòng ${company.rowNumber}: ${company.companyName}\n`;
+      });
+    });
+    
+    textContent += "\n";
   });
+  
+  textContent += "\nTrân trọng";
 
   // === SEND EMAIL ===
   try {
@@ -331,11 +338,19 @@ function sendPersonalizedEmailUltimate(groupedData, employeeName) {
         name: "Data System"
       }
     );
-
+    
+    // Count total missing items
+    let totalMissing = 0;
+    Object.values(groupedData).forEach(monthData => {
+      Object.values(monthData).forEach(fieldArray => {
+        totalMissing += fieldArray.length;
+      });
+    });
+    
     console.log(`Email sent successfully to ${EMPLOYEE_EMAIL}`);
     console.log(`Recipient: ${employeeName}`);
-    console.log(`Total entries with missing data: ${totalEntries}`);
-
+    console.log(`Total: ${totalMissing} missing items across ${sortedMonths.length} months`);
+    
   } catch (error) {
     console.error("Email sending error:", error);
     throw error;

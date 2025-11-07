@@ -6,8 +6,9 @@
  */
 
 // =============== CONFIGURATION ===============
-const EMPLOYEE_EMAIL = "quoc.nguyen3@hoanmy.com"; // THAY EMAIL NÀY CHO TỪNG SHEET
-// const EMPLOYEE_EMAIL = "khanh.tran@hoanmy.com, luan.tran@hoanmy.com, quoc.nguyen3@hoanmy.com";
+// const EMPLOYEE_EMAIL = "quoc.nguyen3@hoanmy.com"; // THAY EMAIL NÀY CHO TỪNG SHEET
+// const EMPLOYEE_EMAIL = "quynh.bui@hoanmy.com, luan.tran@hoanmy.com, quoc.nguyen3@hoanmy.com";
+const EMPLOYEE_EMAIL = "quoc.nguyen3@hoanmy.com";
 const SHEET_NAME = "file nhap chc"; // Tên sheet chứa data
 const EMAIL_SUBJECT = "Cập nhật thông tin hợp đồng";
 

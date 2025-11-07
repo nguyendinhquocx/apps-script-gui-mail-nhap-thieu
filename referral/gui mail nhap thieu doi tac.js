@@ -5,7 +5,8 @@
  */
 
 // =============== CONFIGURATION ===============
-const EMPLOYEE_EMAIL = "quoc.nguyen3@hoanmy.com"; // THAY EMAIL NÀY CHO TỪNG NHÂN VIÊN
+const EMPLOYEE_EMAIL = "tram.mai@hoanmy.com, luan.tran@hoanmy.com, quoc.nguyen3@hoanmy.com"; 
+// const EMPLOYEE_EMAIL = "quoc.nguyen3@hoanmy.com"; // THAY EMAIL NÀY CHO TỪNG NHÂN VIÊN
 const SHEET_NAME = "thong tin doi tac";
 const EMAIL_SUBJECT = "Bổ sung thông tin đối tác";
 
@@ -56,28 +57,26 @@ function manualCheck() {
 function scanMissingData() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
   const data = sheet.getRange("A:Z").getValues();
+  const displayData = sheet.getRange("A:Z").getDisplayValues(); // Get display text
 
   const groupedByPartner = {};
   const currentMonth = new Date().getMonth() + 1;
-  const currentYear = new Date().getFullYear();
   let employeeName = "";
 
   console.log(`=== SCAN START ===`);
-  console.log(`Current: ${currentMonth}/${currentYear}`);
+  console.log(`Current month: ${currentMonth} (checking all years)`);
 
   // Loop through rows (skip header)
   for (let i = 1; i < data.length; i++) {
     const row = data[i];
 
-    // Check: có tên đối tác (A) và năm hợp tác (N)
-    if (row[0] && row[13]) {
-      const yearValue = row[13];
+    // Check: có tên đối tác (A) và tháng hợp tác (O)
+    if (row[0] && row[14]) {
       const monthValue = row[14];
-      const year = parseInt(yearValue) || 0;
       const month = parseInt(monthValue) || 0;
 
-      // FILTER: Chỉ xử lý năm hiện tại và tháng <= hiện tại
-      if (year !== currentYear || month > currentMonth) {
+      // FILTER: Chỉ xử lý tháng <= hiện tại (tất cả các năm)
+      if (month > currentMonth || month === 0) {
         continue;
       }
 
@@ -96,7 +95,22 @@ function scanMissingData() {
         const fieldName = REQUIRED_FIELDS[col];
         const cellValue = row[colIndex];
 
-        if (isEmptyValue(cellValue)) {
+        // For date fields (ngày hợp tác), convert to text to check if empty
+        let checkValue = cellValue;
+        if (fieldName === 'ngày hợp tác') {
+          // Convert to string and check
+          const textValue = String(cellValue || '').trim();
+
+          // Empty if: null, undefined, empty string, or common placeholders
+          if (!cellValue || textValue === '' || textValue === 'null' || textValue === 'undefined' ||
+              textValue === '-' || textValue === '--' || textValue === '---') {
+            checkValue = ''; // Mark as empty
+          } else {
+            checkValue = cellValue; // Has value, keep it
+          }
+        }
+
+        if (isEmptyValue(checkValue)) {
           missingFields.push({
             fieldName: fieldName,
             month: month
@@ -309,7 +323,7 @@ function columnLetterToIndex(letter) {
 
 // =============== SETUP FUNCTIONS ===============
 
-function setupTuesdayFridayTriggers() {
+function setupMondayThursdayTriggers() {
   // Xóa trigger cũ
   const triggers = ScriptApp.getProjectTriggers();
   triggers.forEach(trigger => {
@@ -318,21 +332,21 @@ function setupTuesdayFridayTriggers() {
     }
   });
 
-  // Trigger: Thứ 3
+  // Trigger: Thứ 2
   ScriptApp.newTrigger('dailyEmailCheck')
     .timeBased()
-    .onWeekDay(ScriptApp.WeekDay.TUESDAY)
+    .onWeekDay(ScriptApp.WeekDay.MONDAY)
     .atHour(14)
     .create();
 
-  // Trigger: Thứ 6
+  // Trigger: Thứ 5
   ScriptApp.newTrigger('dailyEmailCheck')
     .timeBased()
-    .onWeekDay(ScriptApp.WeekDay.FRIDAY)
+    .onWeekDay(ScriptApp.WeekDay.THURSDAY)
     .atHour(14)
     .create();
 
-  console.log("Triggers setup: Tuesday & Friday at 2 PM");
+  console.log("Triggers setup: Monday & Thursday at 2 PM");
 }
 
 function setupDailyTrigger() {

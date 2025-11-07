@@ -489,22 +489,22 @@ function setupTuesdayFridayTriggers() {
       ScriptApp.deleteTrigger(trigger);
     }
   });
-  
+
   // Trigger 1: Thứ 3 (TUESDAY)
   ScriptApp.newTrigger('dailyEmailCheck')
     .timeBased()
     .onWeekDay(ScriptApp.WeekDay.TUESDAY)
     .atHour(14)
     .create();
-  
+
   // Trigger 2: Thứ 6 (FRIDAY)
   ScriptApp.newTrigger('dailyEmailCheck')
     .timeBased()
     .onWeekDay(ScriptApp.WeekDay.FRIDAY)
     .atHour(14)
     .create();
-  
-  console.log("Triggers setup: Tuesday & Friday at 2 PM");
+
+  console.log("Triggers setup: Tuesday & Friday at 2 PM (14:00)");
   console.log("Next runs will be on Tuesdays and Fridays at 14:00");
 }
 
